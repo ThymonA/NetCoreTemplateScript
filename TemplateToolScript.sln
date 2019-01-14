@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateToolScript", "TemplateToolScript\TemplateToolScript.csproj", "{9D4944D0-C2C8-4FE8-96E9-C8CDFCA95D62}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9D4944D0-C2C8-4FE8-96E9-C8CDFCA95D62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D4944D0-C2C8-4FE8-96E9-C8CDFCA95D62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D4944D0-C2C8-4FE8-96E9-C8CDFCA95D62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D4944D0-C2C8-4FE8-96E9-C8CDFCA95D62}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3D959F03-51BF-48AE-A2F0-E419E91C0053}
+	EndGlobalSection
+EndGlobal
