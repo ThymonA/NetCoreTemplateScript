@@ -1,10 +1,10 @@
 # NetCoreTemplateScript
 
-![N|Solid](https://i.imgur.com/1G472cj.png)
+| **Before** | **After** |
+|:--:|:---:|
+| ![](https://imgur.com/download/sCLIKZI) | ![](https://i.imgur.com/JzwmiJ5.png) |
 
 ### 1. This script has the following commands
-
-#### 1.1 General
 
 | Commands | Description | Module |
 |:-------------:|:-----:|:----:|
@@ -13,10 +13,6 @@
 | ```help``` | Show an overview with available commands | General |  
 | ```clear``` | Clears the console | General |  
 | ```quit``` | Close the console | General |  
-
-#### 1.2 Generate
-| Commands | Description | Module |
-|:-------------:|:-----:|:----:|
 | ```generate``` | Show an overview with available commands in module 'generate' | Generate |  
 | ```generate help``` | Show an overview with available commands in module 'generate' | Generate |  
 | ```generate valid``` | Validate whether current folder can be used to generate code. | Generate |  
