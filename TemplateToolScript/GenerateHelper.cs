@@ -11,10 +11,13 @@
     {
         public static Dictionary<string, bool> ValidPaths { get; } = new Dictionary<string, bool>();
 
+        public static Dictionary<string, string> Models { get; } = new Dictionary<string, string>();
+
         public static Dictionary<string, string> Menus
             => new Dictionary<string, string>
             {
                 { "valid", "Validate whether current folder can be used to generate code." },
+                { "models", "Gives a list of all available models" },
                 { "providers", "Generate providers for models" },
                 { "services", "Generate services for models" },
                 { "help", "Show an overview with available commands in module 'generate'" }
@@ -51,6 +54,20 @@
                     return;
                 case "valid":
                     CheckIfDirectoryIsValid();
+                    Program.EmptyLine();
+                    return;
+                case "models":
+                    CheckIfDirectoryIsValid();
+
+                    if (!ValidPaths.ContainsKey(Program.CurrentDirectory) ||
+                        !ValidPaths.First(x => x.Key.Equals(Program.CurrentDirectory, StringComparison.InvariantCultureIgnoreCase)).Value)
+                    {
+                        Program.EmptyLine();
+                        return;
+                    }
+
+                    SetModules();
+                    PrintModules();
                     Program.EmptyLine();
                     return;
                 default:
@@ -229,6 +246,44 @@
             }
 
             NotValidDirectory();
+        }
+
+        private static void SetModules()
+        {
+            var directories = Directory.GetDirectories(Program.CurrentDirectory);
+            var dd = directories.First(x => x.Contains(".DAL", StringComparison.InvariantCultureIgnoreCase));
+            var modelPath = $"{(dd.EndsWith("\\") ? dd : $"{dd}\\")}Models";
+            var modelFilePaths = Directory.GetFiles(modelPath, "*.cs", SearchOption.AllDirectories);
+
+            foreach (var modelFilePath in modelFilePaths)
+            {
+                var (item1, item2, item3) = PathIsValidModel(modelFilePath);
+
+                if (item3 && !BlackList.Contains(item2) && !Models.ContainsKey(item1))
+                {
+                    Models.Add(item1, item2);
+                }
+            }
+        }
+
+        private static void PrintModules()
+        {
+            var index = 1;
+
+            Console.Write("Models: ");
+
+            foreach (var (key, value) in Models)
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write(value);
+                Console.ResetColor();
+
+                Console.Write($"{(Models.Count == index ? string.Empty : ", ")}");
+
+                index++;
+            }
+
+            Console.WriteLine();
         }
     }
 }
