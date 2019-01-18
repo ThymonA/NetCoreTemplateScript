@@ -56,6 +56,41 @@
                     CheckIfDirectoryIsValid();
                     Program.EmptyLine();
                     return;
+                case "viewmodel":
+                    var model = string.Empty;
+
+                    SetModules();
+
+                    if (actions.Count < 3)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        var modelname = Models.Any() ? Models.First().Value : "Model1";
+                        Console.WriteLine($"You forget to give a model (example: generate viewmodel {modelname})");
+                        Console.ResetColor();
+                        Program.EmptyLine();
+                        return;
+                    }
+
+                    if (Models.Any(m => m.Value.Equals(
+                            actions[2].Trim(),
+                            StringComparison.InvariantCultureIgnoreCase)))
+                    {
+                        model = Models.First(m => m.Value.Equals(
+                            actions[2].Trim(),
+                            StringComparison.InvariantCultureIgnoreCase)).Value;
+
+                        Console.WriteLine($"Model {model} geselecteerd");
+
+                        Program.EmptyLine();
+                        return;
+                    }
+
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("We could not found your specified model");
+                    Console.ResetColor();
+
+                    Program.EmptyLine();
+                    return;
                 case "models":
                     CheckIfDirectoryIsValid();
 
